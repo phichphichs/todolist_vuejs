@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <section id="assignment">
+      <h1>
+        Todo List
+        <span>Get things done, one item at a time.</span>
+      </h1>
+
+      <input type="text" class="textInput" v-model="content" />
+      <button class="add-btn" @click="add(content)">Add note</button>
+
+      <ui class="note" v-for="(note, index) in arr" :key="index">
+        <li
+          v-show="index != 0"
+          class="textNote"
+          type="text"
+          :class="note.done ? 'decoration': ''"
+        >
+          {{note.note}}
+          <span class="left" v-show="index != 0">
+            <input type="checkbox" v-model="note.done" />
+            <button class="btn-delete" @click="remove(index)">x</button>
+          </span>
+        </li>
+      </ui>
+    </section>
+  </body>
+</html>
